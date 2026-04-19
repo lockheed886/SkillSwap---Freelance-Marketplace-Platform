@@ -1,0 +1,305 @@
+/* File: client/src/index.css */
+/* Global styles, typography, button styles, and utility classes */
+/* /client/src/index.css */
+@import "tailwindcss"; /* Tailwind base, components, and utilities */
+
+/* Basic CSS reset - Tailwind's preflight (included via @import "tailwindcss") handles much of this. */
+/* Redundant '*' reset removed as Tailwind's preflight is more comprehensive. */
+
+/* Global styles for consistent spacing and enhanced design */
+:root {
+  /* Primary colors */
+  --primary-color: #4f46e5; /* Indigo 600 - Main brand color */
+  --primary-hover: #4338ca; /* Indigo 700 - Hover state */
+  --primary-light: #e0e7ff; /* Indigo 100 - Light backgrounds */
+  --primary-dark: #3730a3;  /* Indigo 800 - For darker primary elements */
+
+  /* Secondary colors */
+  --secondary-color: #10b981; /* Emerald 500 - Secondary actions */
+  --secondary-hover: #059669; /* Emerald 600 - Hover state */
+  --secondary-light: #d1fae5; /* Emerald 100 */
+
+  /* Neutral colors */
+  --background-color: #f9fafb; /* Gray 50 - Page background */
+  --card-background: #ffffff;   /* White - Card backgrounds */
+  --text-primary: #1f2937;     /* Gray 800 - Primary text */
+  --text-secondary: #4b5563;   /* Gray 600 - Secondary text */
+  --text-light: #ffffff;       /* White - Text on dark backgrounds */
+  --text-disabled: #9ca3af;    /* Gray 400 - Disabled text */
+
+  /* Accent and Feedback colors */
+  --accent-color: #f59e0b;     /* Amber 500 - Accents and highlights */
+  --error-color: #ef4444;      /* Red 500 - Errors and warnings */
+  --error-light: #fee2e2;      /* Red 100 - Error background */
+  --success-color: #10b981;    /* Emerald 500 - Success messages (same as secondary) */
+  --success-light: #d1fae5;    /* Emerald 100 - Success background */
+  --warning-color: #f97316;    /* Orange 500 */
+  --warning-light: #ffedd5;    /* Orange 100 */
+
+  /* Border and shadow */
+  --border-color: #e5e7eb;     /* Gray 200 - Borders */
+  --border-color-strong: #d1d5db; /* Gray 300 - Stronger borders */
+  --input-focus-ring: var(--primary-color); /* Ring color for focused inputs */
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Spacing */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem;  /* 8px */
+  --space-md: 1rem;    /* 16px */
+  --space-lg: 1.5rem;  /* 24px */
+  --space-xl: 2rem;    /* 32px */
+
+  /* Font */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: var(--space-md); /* Consistent spacing below headings */
+  font-weight: 700; /* Bold headings */
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 2.25rem; } /* Reduced slightly for better balance */
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  font-size: 1rem;
+  color: var(--text-secondary); /* Consistent secondary text color for paragraphs */
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Add spacing between sections */
+section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+/* Buttons - Base styles, to be extended with Tailwind or specific classes */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem; /* Adjusted padding for better feel */
+  font-size: 0.9375rem; /* Slightly smaller for common buttons */
+  font-weight: 600;
+  border-radius: 0.375rem; /* Tailwind's rounded-md */
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  margin: var(--space-xs); /* Consistent small margin */
+  cursor: pointer;
+  border: 1px solid transparent; /* Base border for consistency */
+  box-shadow: var(--shadow-sm);
+  text-decoration: none !important; /* Override link underlines */
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn:active {
+  transform: translateY(0px);
+  box-shadow: var(--shadow-sm);
+}
+.btn:disabled, .btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--primary-dark);
+  outline-offset: 2px;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  border-color: var(--secondary-color);
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+}
+
+/* Outline Button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-outline:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-hover);
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: var(--error-color);
+  color: var(--text-light);
+  border-color: var(--error-color);
+}
+.btn-danger:hover {
+  background-color: #dc2626; /* Red 600 */
+  border-color: #dc2626;
+}
+
+/* Text Button */
+.btn-text {
+  background-color: transparent;
+  color: var(--primary-color);
+  box-shadow: none;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
+.btn-text:hover {
+  background-color: var(--primary-light);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0.875rem; /* Adjusted padding */
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--card-background);
+  background-clip: padding-box;
+  border: 1px solid var(--border-color-strong);
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--input-focus-ring);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--input-focus-ring), 0.25); /* Use primary color for focus ring */
+}
+label {
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.form-group { /* Helper class for form field grouping */
+  margin-bottom: var(--space-md);
+}
+
+/* Card styles */
+.card-base {
+  background-color: var(--card-background);
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: var(--shadow-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg); /* Added default bottom margin for cards */
+}
+
+/* Alert/Notification styles */
+.alert {
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid transparent;
+  border-radius: 0.375rem; /* rounded-md */
+}
+.alert-error {
+  color: #721c24; /* Darker red for text */
+  background-color: var(--error-light);
+  border-color: var(--error-color);
+}
+.alert-success {
+  color: #0f5132; /* Darker green for text */
+  background-color: var(--success-light);
+  border-color: var(--success-color);
+}
+.alert-warning {
+  color: #664d03;
+  background-color: var(--warning-light);
+  border-color: var(--warning-color);
+}
+.alert-info {
+  color: #055160;
+  background-color: #cff4fc; /* Light blue */
+  border-color: #0ea5e9; /* Sky 500 */
+}
+
+/* Utility classes (can be extended) */
+.text-danger { color: var(--error-color); }
+.text-success { color: var(--success-color); }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Responsive container for #root to be centered */
+#root > .container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+/* Ensure a minimum height for the root to push footer down if content is short */
+html, body, #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#root {
+  flex-grow: 1; /* Allows #root to take available space */
+}
